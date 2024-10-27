@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+}
+
+.web-name {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin: 10px;
+    color: #D8125C;
+}
+
+/*.web-description {
+    margin: 25px 355px;
+    color: #c4afb7;
+    font-size: 18px;
+    font-weight: 200;
+}
+*/
+.web-description {
+    display: flex;
+    color: #E6DDDE;
+
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    max-width: 800px; 
+    margin: 0 auto; /* Centers the container */
+    padding: 20px 40px; /* Adds padding on top/bottom and sides */
+}
+
+.web-description div {
+    margin-bottom: 15px;
+    text-align: justify; 
+    line-height: 1.6; 
+   /* transition: background-color 5s, color 5s;*/
+}
+/*
+.web-description:hover {
+    background-color: #E6DDDE;
+    color: black;
+    cursor: pointer;
+}
+*/
+
+.play-headline {
+    color: #D8125C;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.all-rushes {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    column-gap: 30px;
+    row-gap: 30px;
+    padding: 10px;
+}
+.all-rushes .rush {
+    width: 300px;
+    height: 500px;
+}
+
+.rush-img {
+    width: 300px;
+    height: 250px;
+}
+.rush-name {
+    text-align: center;
+    font-size: 25px;
+}
+
+.rush .rush-short-details {
+    max-width: max-content;
+    max-height: max-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #D8125C;
+    font-size: 18px;
+}

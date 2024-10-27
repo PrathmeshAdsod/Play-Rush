@@ -1,0 +1,14 @@
+{
+  "name": "photorealistic_3d_map",
+  "version": "1.0.0",
+  "description": "https://developers.google.com/maps/documentation/javascript/examples/3d/controls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prathmesh Adsod",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
