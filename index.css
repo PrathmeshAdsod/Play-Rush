@@ -77,7 +77,12 @@ body {
 .rush-img {
     width: 300px;
     height: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
     
+}
+.rush-img:hover {
+    transform: translateY(-10px); /* Moves image slightly upward */
 }
 .rush-name {
     text-align: center;
@@ -97,59 +102,59 @@ body {
     padding: 10px 5px;
     margin-top: 5px;
 }
-
-
-.play-btn {
-    line-height: 50px;
-    height: 50px;
-    text-align: center;
-    width: 250px;
+.rush:hover {
     cursor: pointer;
-    margin: 35px 25px 10px 25px;
-    background-color: rgb(0, 0, 0);
-    color: #FFF;
 }
 
 .play-btn {
-    color: #FFF;
-    transition: all 0.5s;
+    margin: 25px 50px;
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    height: 50px;
+    width: 200px;
+    color: #ffedd3; 
     position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+    box-shadow: rgba(201, 201, 201, 0.24) 0px 3px 8px;
   }
 
-.play-btn a {
-    color: white;
-    font-size: 17px;
-    text-decoration: none;
-}
   .play-btn::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffffff;
+    transition: 0.5s ease;
   }
+  
+  .play-btn:hover {
+    color: #000000;
+    transition-delay: 0.5s;
+  }
+  
   .play-btn:hover::before {
-    opacity: 0 ;
-    transform: scale(0.5,0.5);
+    width: 100%; 
   }
+  
   .play-btn::after {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: 0;
+    height: 0;
     width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.3s;
-    border: 1px solid rgba(255,255,255,0.5);
-    transform: scale(1.2,1.2);
+    background-color: #ffffff;
+    transition: 0.4s ease;
+    z-index: -1;
+    color: black;
   }
+  
   .play-btn:hover::after {
-    opacity: 1;
-    transform: scale(1,1);
+    height: 100%;
+    transition-delay: 0.4s;
   }
+  
