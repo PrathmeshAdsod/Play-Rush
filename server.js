@@ -1,15 +1,35 @@
 // server.js
 const express = require("express");
 const axios = require("axios");
+const path = require('path');
+const { Console } = require("console");
 require("dotenv").config();
 
 const app = express();
 const PORT = 3000;
 
-app.use(express.static("public")); 
+app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "./index.html");
+});
+
+// Use route parameters
+app.get("/plays/:playId/:fileName", async (req, res) => {
+  const { playId, fileName } = req.params; // get req. params in url
+
+  // Construct the file path based on route parameters to send
+  // file to the browser
+  const filePath = (__dirname+"/plays/"+ playId+"/" +`${fileName}`);
+  console.log(playId)
+  console.log(filePath) 
+
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error("Error serving file:", err);
+      res.status(404).send("Page not found");
+    }
+  });
 });
 
 // Route to serve Google Maps API via proxy
