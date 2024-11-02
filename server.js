@@ -2,7 +2,6 @@
 const express = require("express");
 const axios = require("axios");
 const path = require('path');
-const { Console } = require("console");
 require("dotenv").config();
 
 const app = express();
@@ -21,8 +20,6 @@ app.get("/plays/:playId/:fileName", async (req, res) => {
   // Construct the file path based on route parameters to send
   // file to the browser
   const filePath = (__dirname+"/plays/"+ playId+"/" +`${fileName}`);
-  console.log(playId)
-  console.log(filePath) 
 
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -34,16 +31,12 @@ app.get("/plays/:playId/:fileName", async (req, res) => {
 
 // Route to serve Google Maps API via proxy
 app.get("/google-maps-api", async (req, res) => {
-  try {
-    const response = await axios.get(
-      "https://maps.googleapis.com/maps/api/js?key=process.env.API_KEY&v=alpha&libraries=maps3d"
-    );
-    res.setHeader("Content-Type", "application/javascript");
-    res.send(response.data);
-  } catch (error) {
-    console.error("Failed to load Google Maps API:", error);
-    res.status(500).send("Error loading Google Maps API");
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    return res.status(500).send('API key is missing');
   }
+  const googleMapsUrl = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&&loading=async&v=alpha&libraries=maps3d`;
+  res.redirect(googleMapsUrl);
 });
 
 app.listen(PORT, () => {
