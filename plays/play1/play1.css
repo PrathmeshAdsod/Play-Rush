@@ -1,0 +1,22 @@
+
+
+#timer-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+

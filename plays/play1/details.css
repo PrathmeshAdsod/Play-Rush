@@ -114,7 +114,6 @@ body {
   height: fit-content;
   width: 50%;
   margin: 50px auto;
-  background-color: #ffffff;
   cursor: pointer;
   padding: 25px;
   opacity: 0.7;
@@ -122,8 +121,11 @@ body {
 
 .rush-para {
   color: #000000;
+  padding: 20px;
+  background-color: #ffffff;
   font-weight: 900;
   font-family: "Cormorant Garamond", serif;
+  margin: 10px;
 }
 
 .rush-details:hover {
