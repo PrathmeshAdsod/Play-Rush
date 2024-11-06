@@ -1,20 +1,29 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./play1.css">
-   
-</head>
-<body>
+    <link rel="stylesheet" href="./play1.css" />
+    <script async defer src="/google-places-api"></script>
+  </head>
+  <body>
     <div id="timer-popup"></div>
+    <div class="pac-card" id="pac-card">
+      <div id="title">Navigate to a place</div>
+      <div id="pac-container">
+        <input
+          class="pac-input"
+          type="text"
+          id="pac-input"
+          name="pac-input"
+          placeholder="Enter a location..."
+        />
+      </div>
+    </div>
 
-    <gmp-map-3d center="37.841157, -122.551679" tilt="67.5"></gmp-map-3d>
+  
+    <script defer src="./play1.js"></script>
 
-    <script src="./play1.js"></script>
-    <script async src="/google-maps-api"></script>
-</body>
+  </body>
 </html>
