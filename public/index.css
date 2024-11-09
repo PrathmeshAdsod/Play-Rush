@@ -5,6 +5,21 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+#playPauseBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: #ffffff 0px 25px 50px -12px;
+  }
+  
 .name-desc-container {
     background-color: #fff;
     user-select: none;
@@ -58,7 +73,7 @@ body {
     color: #fff;
     font-size: 60px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-weight: 800;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     /*text-shadow: 0px 3px 0px #343332,
@@ -91,6 +106,7 @@ body {
 .rush-img {
     width: 300px;
     height: 250px;
+   /* object-fit: cover; */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
     
