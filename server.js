@@ -6,7 +6,7 @@ const axios = require("axios");
 const path = require('path');
 require("dotenv").config();
 
-const app = express();
+const app = express(); 
 const PORT = 3000;
 
 /*********************              MIDDLWARE FOR STATIC FILES     ********************/

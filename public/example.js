@@ -26,7 +26,7 @@ async function init() {
 
   map3DElement.flyCameraTo({
     endCamera: {
-      center: { lat: 37.6191, lng: -122.3816, altitude:100 },
+      center: { lat: 37.6191, lng: -122.3816, altitude:1000 },
       tilt: 67.5,
       range: 1000
     },
