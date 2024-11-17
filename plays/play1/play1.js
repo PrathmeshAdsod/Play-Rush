@@ -1,7 +1,9 @@
 import { popupdataQuestions, popupdataAns } from "./popupsdata.js";
 
 let answer = null;
-let lockOneUnlocked, lockTwoUnlocked, lockThreeUnlocked = false;
+let lockOneUnlocked,
+  lockTwoUnlocked,
+  lockThreeUnlocked = false;
 const closePopup = () => {
   document.getElementById("taskPopup").style.display = "none";
 };
@@ -63,25 +65,7 @@ async function init() {
 
   map3DElement.append(model);
 
-  /*
-  let locationPoints = [
-    {
-      lat: 48.85466497254251,
-      lng: 2.2954396619839796,
-    },
-    {
-      lat: 48.85762007985151,
-      lng: 2.2999310349462263,
-    },
-  ];
-  let locationPolyline = new Polyline3DElement({
-    altitudeMode: AltitudeMode.CLAMP_TO_GROUND,
-    strokeColor: "pink",
-    strokeWidth: 20,
-    coordinates: locationPoints,
-  });
-  map3DElement.append(locationPolyline);
-*/
+  
   // Define polygon coordinates (around the Eiffel Tower)
   const polygonCoordsPlace1 = [
     {
@@ -141,7 +125,6 @@ async function init() {
   console.log(polygonPlace1);
 
   map3DElement.addEventListener("gmp-click", async (event) => {
-
     if (event.placeId === "ChIJl0USWgBx5kcR7c60ktBHoKQ") {
       showPopup(
         popupdataQuestions[0].title,
@@ -164,7 +147,7 @@ async function init() {
               50,
               20000
             );
-          } 
+          }
         });
     }
 
@@ -183,7 +166,7 @@ async function init() {
           if (popupdataAns[1].has(answer.toLowerCase())) {
             closePopup();
             document.getElementById("popupAnswer").value = "";
-            
+
             const locationPointsWhiteHouseToLinconMemorial = [
               { lat: 38.90048691793611, lng: -77.0364520173927 },
               { lat: 38.901427744028524, lng: -77.03652419210276 },
@@ -222,8 +205,14 @@ async function init() {
           if (popupdataAns[2].has(answer.toLowerCase())) {
             closePopup();
             document.getElementById("popupAnswer").value = "";
-            
-            flyToNextPlace(51.500725048861845, -0.12462037155249032, 500, 50, 20000);
+
+            flyToNextPlace(
+              51.500725048861845,
+              -0.12462037155249032,
+              500,
+              50,
+              20000
+            );
             setTimeout(() => {
               showPopup(
                 popupdataQuestions[3].title,
@@ -244,33 +233,28 @@ async function init() {
       );
 
       const locationPointsPaplaceToTunnel = [
-        { lat:51.50199171250848, lng: -0.14002414883697162},
+        { lat: 51.50199171250848, lng: -0.14002414883697162 },
         { lat: 51.5002282601169, lng: -0.14095339829953704 },
-        { lat: 51.5011324592082, lng: -0.12771835940139967},
-        { lat: 51.500312503035, lng:  -0.12742063869980105},
+        { lat: 51.5011324592082, lng: -0.12771835940139967 },
+        { lat: 51.500312503035, lng: -0.12742063869980105 },
         { lat: 51.50022264391924, lng: -0.12631997421847965 },
-        { lat: 51.50102575340985, lng:  -0.12607638455353531 },
-        {lat: 51.50026475695673,  lng:-0.11669793088861279},
-        {lat:51.50155084739325, lng: -0.11704076074322922 },
-        {lat: 51.50238201315516, lng: -0.11636412278505054},
-        {lat: 51.501921504267955,  lng:-0.11556117907467844} 
+        { lat: 51.50102575340985, lng: -0.12607638455353531 },
+        { lat: 51.50026475695673, lng: -0.11669793088861279 },
+        { lat: 51.50155084739325, lng: -0.11704076074322922 },
+        { lat: 51.50238201315516, lng: -0.11636412278505054 },
+        { lat: 51.501921504267955, lng: -0.11556117907467844 },
       ];
 
-      let locationPolylinePalaceToTunnel =
-        new Polyline3DElement({
-          altitudeMode: AltitudeMode.CLAMP_TO_GROUND,
-          strokeColor: "red",
-          strokeWidth: 20,
-          coordinates: locationPointsPaplaceToTunnel,
-        });
+      let locationPolylinePalaceToTunnel = new Polyline3DElement({
+        altitudeMode: AltitudeMode.CLAMP_TO_GROUND,
+        strokeColor: "red",
+        strokeWidth: 20,
+        coordinates: locationPointsPaplaceToTunnel,
+      });
 
       map3DElement.append(locationPolylinePalaceToTunnel);
-
-
-      
-      
     }
-   // Graffiti tunnel ChIJkSkaX7gEdkgRXGkVq9DzCcI
+    // Graffiti tunnel ChIJkSkaX7gEdkgRXGkVq9DzCcI
     if (event.placeId === "ChIJkSkaX7gEdkgRXGkVq9DzCcI") {
       showPopup(
         popupdataQuestions[5].title,
@@ -279,31 +263,36 @@ async function init() {
       );
 
       document
-      .getElementById("popupSend")
-      .addEventListener("click", async () => {
-        answer = document.getElementById("popupAnswer").value;
-        console.log(answer);
+        .getElementById("popupSend")
+        .addEventListener("click", async () => {
+          answer = document.getElementById("popupAnswer").value;
+          console.log(answer);
 
-        if (popupdataAns[3].has(answer.toLowerCase())) {
-          closePopup();
-          document.getElementById("popupAnswer").value = "";
-          
-          flyToNextPlace(55.41558021778054, -1.7059101314995402, 500, 50, 20000);
-          setTimeout(() => {
-            showPopup(
-              popupdataQuestions[6].title,
-              popupdataQuestions[6].message,
-              "none"
+          if (popupdataAns[3].has(answer.toLowerCase())) {
+            closePopup();
+            document.getElementById("popupAnswer").value = "";
+
+            flyToNextPlace(
+              55.41558021778054,
+              -1.7059101314995402,
+              500,
+              50,
+              20000
             );
-          }, 20000);
-        }
-      });
+            setTimeout(() => {
+              showPopup(
+                popupdataQuestions[6].title,
+                popupdataQuestions[6].message,
+                "none"
+              );
+            }, 20000);
+          }
+        });
     }
     //  Alnwick Castle
-   
+
     if (event.placeId === "ChIJDbwj7eAAfkgRQfaQspg6eAg") {
-      
-      if(!lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
+      if (!lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
         showPopup(
           popupdataQuestions[7].title,
           popupdataQuestions[7].message,
@@ -311,80 +300,78 @@ async function init() {
         );
 
         document
-      .getElementById("popupSend")
-      .addEventListener("click", async () => {
-        answer = document.getElementById("popupAnswer").value;
-       
-
-        if (popupdataAns[4].has(answer.toLowerCase())) {
-          closePopup();
-          document.getElementById("popupAnswer").value = "";
-          lockOneUnlocked = true;
-          console.log("lockOneUnlocked ", lockOneUnlocked);
-
-          if(lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
-            showPopup(
-              popupdataQuestions[8].title,
-              popupdataQuestions[8].message,
-              "block"
-            );
-    
-            document
           .getElementById("popupSend")
           .addEventListener("click", async () => {
             answer = document.getElementById("popupAnswer").value;
-            console.log(answer);
-    
-            if (popupdataAns[5].has(answer.toLowerCase())) {
+
+            if (popupdataAns[4].has(answer.toLowerCase())) {
               closePopup();
               document.getElementById("popupAnswer").value = "";
-              lockTwoUnlocked = true;
+              lockOneUnlocked = true;
+              console.log("lockOneUnlocked ", lockOneUnlocked);
 
-              if(lockOneUnlocked && lockTwoUnlocked && !lockThreeUnlocked) {
+              if (lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
                 showPopup(
-                  popupdataQuestions[9].title,
-                  popupdataQuestions[9].message,
+                  popupdataQuestions[8].title,
+                  popupdataQuestions[8].message,
                   "block"
                 );
-        
+
                 document
-              .getElementById("popupSend")
-              .addEventListener("click", async () => {
-                answer = document.getElementById("popupAnswer").value;
-                console.log(answer);
-        
-                if (popupdataAns[6].has(answer.toLowerCase())) {
-                  closePopup();
-                  document.getElementById("popupAnswer").value = "";
-                  lockThreeUnlocked = true;
+                  .getElementById("popupSend")
+                  .addEventListener("click", async () => {
+                    answer = document.getElementById("popupAnswer").value;
+                    console.log(answer);
 
+                    if (popupdataAns[5].has(answer.toLowerCase())) {
+                      closePopup();
+                      document.getElementById("popupAnswer").value = "";
+                      lockTwoUnlocked = true;
 
-                  if(lockOneUnlocked && lockTwoUnlocked && lockThreeUnlocked) {
-                    showPopup(
-                      popupdataQuestions[10].title,
-                      popupdataQuestions[10].message,
-                      "none"
-                    );
-                    
-                  }
-                }
-              });
+                      if (
+                        lockOneUnlocked &&
+                        lockTwoUnlocked &&
+                        !lockThreeUnlocked
+                      ) {
+                        showPopup(
+                          popupdataQuestions[9].title,
+                          popupdataQuestions[9].message,
+                          "block"
+                        );
+
+                        document
+                          .getElementById("popupSend")
+                          .addEventListener("click", async () => {
+                            answer =
+                              document.getElementById("popupAnswer").value;
+                            console.log(answer);
+
+                            if (popupdataAns[6].has(answer.toLowerCase())) {
+                              closePopup();
+                              document.getElementById("popupAnswer").value = "";
+                              lockThreeUnlocked = true;
+
+                              if (
+                                lockOneUnlocked &&
+                                lockTwoUnlocked &&
+                                lockThreeUnlocked
+                              ) {
+                                showPopup(
+                                  popupdataQuestions[10].title,
+                                  popupdataQuestions[10].message,
+                                  "none"
+                                );
+                              }
+                            }
+                          });
+                      }
+                    }
+                  });
               }
             }
-
-
           });
-          }
-
-        }
-      });
       }
-      
-    
-     
-
     }
-    
   });
 }
 
