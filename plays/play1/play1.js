@@ -1,6 +1,7 @@
 import { popupdataQuestions, popupdataAns } from "./popupsdata.js";
 
 let answer = null;
+let lockOneUnlocked, lockTwoUnlocked, lockThreeUnlocked = false;
 const closePopup = () => {
   document.getElementById("taskPopup").style.display = "none";
 };
@@ -239,13 +240,151 @@ async function init() {
       showPopup(
         popupdataQuestions[4].title,
         popupdataQuestions[4].message,
+        "none"
+      );
+
+      const locationPointsPaplaceToTunnel = [
+        { lat:51.50199171250848, lng: -0.14002414883697162},
+        { lat: 51.5002282601169, lng: -0.14095339829953704 },
+        { lat: 51.5011324592082, lng: -0.12771835940139967},
+        { lat: 51.500312503035, lng:  -0.12742063869980105},
+        { lat: 51.50022264391924, lng: -0.12631997421847965 },
+        { lat: 51.50102575340985, lng:  -0.12607638455353531 },
+        {lat: 51.50026475695673,  lng:-0.11669793088861279},
+        {lat:51.50155084739325, lng: -0.11704076074322922 },
+        {lat: 51.50238201315516, lng: -0.11636412278505054},
+        {lat: 51.501921504267955,  lng:-0.11556117907467844} 
+      ];
+
+      let locationPolylinePalaceToTunnel =
+        new Polyline3DElement({
+          altitudeMode: AltitudeMode.CLAMP_TO_GROUND,
+          strokeColor: "red",
+          strokeWidth: 20,
+          coordinates: locationPointsPaplaceToTunnel,
+        });
+
+      map3DElement.append(locationPolylinePalaceToTunnel);
+
+
+      
+      
+    }
+   // Graffiti tunnel ChIJkSkaX7gEdkgRXGkVq9DzCcI
+    if (event.placeId === "ChIJkSkaX7gEdkgRXGkVq9DzCcI") {
+      showPopup(
+        popupdataQuestions[5].title,
+        popupdataQuestions[5].message,
         "block"
       );
 
-      
-    }
-    // 55.41558021778054, -1.7059101314995402 Alnwick Castle
+      document
+      .getElementById("popupSend")
+      .addEventListener("click", async () => {
+        answer = document.getElementById("popupAnswer").value;
+        console.log(answer);
 
+        if (popupdataAns[3].has(answer.toLowerCase())) {
+          closePopup();
+          document.getElementById("popupAnswer").value = "";
+          
+          flyToNextPlace(55.41558021778054, -1.7059101314995402, 500, 50, 20000);
+          setTimeout(() => {
+            showPopup(
+              popupdataQuestions[6].title,
+              popupdataQuestions[6].message,
+              "none"
+            );
+          }, 20000);
+        }
+      });
+    }
+    //  Alnwick Castle
+   
+    if (event.placeId === "ChIJDbwj7eAAfkgRQfaQspg6eAg") {
+      
+      if(!lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
+        showPopup(
+          popupdataQuestions[7].title,
+          popupdataQuestions[7].message,
+          "block"
+        );
+
+        document
+      .getElementById("popupSend")
+      .addEventListener("click", async () => {
+        answer = document.getElementById("popupAnswer").value;
+       
+
+        if (popupdataAns[4].has(answer.toLowerCase())) {
+          closePopup();
+          document.getElementById("popupAnswer").value = "";
+          lockOneUnlocked = true;
+          console.log("lockOneUnlocked ", lockOneUnlocked);
+
+          if(lockOneUnlocked && !lockTwoUnlocked && !lockThreeUnlocked) {
+            showPopup(
+              popupdataQuestions[8].title,
+              popupdataQuestions[8].message,
+              "block"
+            );
+    
+            document
+          .getElementById("popupSend")
+          .addEventListener("click", async () => {
+            answer = document.getElementById("popupAnswer").value;
+            console.log(answer);
+    
+            if (popupdataAns[5].has(answer.toLowerCase())) {
+              closePopup();
+              document.getElementById("popupAnswer").value = "";
+              lockTwoUnlocked = true;
+
+              if(lockOneUnlocked && lockTwoUnlocked && !lockThreeUnlocked) {
+                showPopup(
+                  popupdataQuestions[9].title,
+                  popupdataQuestions[9].message,
+                  "block"
+                );
+        
+                document
+              .getElementById("popupSend")
+              .addEventListener("click", async () => {
+                answer = document.getElementById("popupAnswer").value;
+                console.log(answer);
+        
+                if (popupdataAns[6].has(answer.toLowerCase())) {
+                  closePopup();
+                  document.getElementById("popupAnswer").value = "";
+                  lockThreeUnlocked = true;
+
+
+                  if(lockOneUnlocked && lockTwoUnlocked && lockThreeUnlocked) {
+                    showPopup(
+                      popupdataQuestions[10].title,
+                      popupdataQuestions[10].message,
+                      "none"
+                    );
+                    
+                  }
+                }
+              });
+              }
+            }
+
+
+          });
+          }
+
+        }
+      });
+      }
+      
+    
+     
+
+    }
+    
   });
 }
 
@@ -276,5 +415,5 @@ function startCountdown(duration) {
 }
 
 window.onload = function () {
-  startCountdown(30); //seconds
+  startCountdown(3600); //seconds
 };
