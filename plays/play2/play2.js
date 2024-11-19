@@ -1,5 +1,11 @@
 import { popupdataQuestions, popupdataAns } from "./popupsdata.js";
-
+// 12000
+let map3DElement = null;
+let answer = "";
+let ans1,
+  ans2,
+  ans3 = false;
+let cameBack = false;
 const closePopup = () => {
   document.getElementById("taskPopup").style.display = "none";
 };
@@ -17,11 +23,14 @@ const showPopup = (title, message, display) => {
   document.getElementById("popupSend").style.display = display;
 };
 
-let map3DElement = null;
-let answer = "";
-let ans1,
-  ans2,
-  ans3 = false;
+const locationPointsBritishLibraryToMetaKingCross = [
+  {lat : 51.52946476758867, lng : -0.12644016425095497},
+  {lat : 51.53349980398694, lng : -0.1286767573280902},
+  {lat : 51.53502362590282, lng : -0.12224631809208662}, 
+  {lat : 51.53953923604279, lng : -0.12472152682760651}, 
+  {lat : 51.538317129204394, lng : -0.12747742929015213}
+]
+
 async function init() {
   const {
     Map3DElement,
@@ -106,7 +115,7 @@ async function init() {
                                   -5.431780361042584,
                                   1000,
                                   50,
-                                  20000
+                                  12000
                                 );
 
                                 showPopup(
@@ -115,7 +124,7 @@ async function init() {
                                   "none"
                                 );
                                 setTimeout(() => {
-                                closePopup();
+                                  closePopup();
                                 }, 19000);
                                 setTimeout(() => {
                                   showPopup(
@@ -123,7 +132,7 @@ async function init() {
                                     popupdataQuestions[4].message,
                                     "none"
                                   );
-                                }, 20000);
+                                }, 12000);
                               }
                             }
                           });
@@ -148,19 +157,199 @@ async function init() {
         .addEventListener("click", async () => {
           answer = document.getElementById("popupAnswer").value;
           if (popupdataAns[3].has(answer.toLowerCase())) {
+            document.getElementById("popupAnswer").value = "";
             closePopup();
             flyToNextPlace(
-                51.53204389671746, 
-                -0.12359780000000001,
+              51.53204389671746,
+              -0.12359780000000001,
               500,
               50,
-              20000
+              12000
+            );
+
+            setTimeout(() => {
+              showPopup(
+                popupdataQuestions[6].title,
+                popupdataQuestions[6].message,
+                "none"
+              );
+            }, 12000);
+          }
+        });
+    }
+
+    // British Library near king cross  51.53012638638873, -0.12765722097602147
+    // Can keep many clues, hintsm riddles , questions and maonly answers here
+
+    if (event.placeId === "ChIJC0ehpaMbdkgRjN3ODGNtZdU") {
+      showPopup(
+        popupdataQuestions[7].title,
+        popupdataQuestions[7].message,
+        "block"
+      );
+      document
+        .getElementById("popupSend")
+        .addEventListener("click", async () => {
+          answer = document.getElementById("popupAnswer").value;
+          if (popupdataAns[4].has(answer.toLowerCase())) {
+            document.getElementById("popupAnswer").value = "";
+            closePopup();
+
+            showPopup(
+              popupdataQuestions[8].title,
+              popupdataQuestions[8].message,
+              "block"
+            );
+
+            document
+              .getElementById("popupSend")
+              .addEventListener("click", async () => {
+              
+             answer = document.getElementById("popupAnswer").value;
+             if (popupdataAns[5].has(answer.toLowerCase())) {
+              document.getElementById("popupAnswer").value=""
+                  closePopup();
+                  showPopup(  
+                    popupdataQuestions[9].title,
+                    popupdataQuestions[9].message,
+                    "none"
+                  );
+
+
+             }
+                
+            });
+          }
+        });
+    }
+
+    if(event.placeId === "ChIJlRMXcDsbdkgRJdsP3nlUkBg") {
+      if(cameBack) {
+        closePopup();
+        showPopup(
+          popupdataQuestions[15].title,
+          popupdataQuestions[15].message,
+          "block"
+        )
+        document
+        .getElementById("popupSend")
+        .addEventListener("click", async () => {
+          answer = document.getElementById("popupAnswer").value;
+          if (popupdataAns[9].has(answer.toLowerCase())) {
+            document.getElementById("popupAnswer").value = "";
+            closePopup();
+
+            flyToNextPlace(55.94866075523764, -3.1995272653613864, 1000, 50, 12000);
+          }
+        });
+      }
+      
+      else {
+
+      
+       showPopup(
+        popupdataQuestions[10].title,
+        popupdataQuestions[10].message,
+        "block"
+      );
+
+      document
+      .getElementById("popupSend")
+      .addEventListener("click", async () => {
+        answer = document.getElementById("popupAnswer").value;
+        if (! cameBack && popupdataAns[6].has(answer.toLowerCase())) {
+          document.getElementById("popupAnswer").value = "";
+          closePopup();
+
+          showPopup(
+            popupdataQuestions[11].title,
+            popupdataQuestions[11].message,
+            "block"
+          );
+          document
+          .getElementById("popupSend")
+          .addEventListener("click", async () => {
+            answer = document.getElementById("popupAnswer").value;
+            if (!cameBack && popupdataAns[7].has(answer.toLowerCase())) {
+              document.getElementById("popupAnswer").value = "";
+              closePopup();
+
+              showPopup(
+                popupdataQuestions[12].title,
+                popupdataQuestions[12].message,
+                "block"
+              );
+
+              document
+              .getElementById("popupSend")
+              .addEventListener("click", async () => {
+                answer = document.getElementById("popupAnswer").value;
+                if (!cameBack && popupdataAns[8].has(answer.toLowerCase())) {
+                  document.getElementById("popupAnswer").value = "";
+                  closePopup();
+
+                  showPopup(
+                    popupdataQuestions[13].title,
+                    popupdataQuestions[13].message,
+                    "none"
+                  );
+
+                  let locationPolylineBritishLibraryToMetaKingCross = new Polyline3DElement({
+                    altitudeMode: AltitudeMode.CLAMP_TO_GROUND,
+                    strokeColor: "red",
+                    strokeWidth: 20,
+                    coordinates: locationPointsBritishLibraryToMetaKingCross,
+                  });
+
+                  map3DElement.append(locationPolylineBritishLibraryToMetaKingCross);
+                }
+              }); 
+
+            }
+          });
+
+        
+        }
+
+      });  
+    }
+
+    }
+
+    if(event.placeId === "ChIJATQkQpYbdkgRjY-N0puZt8o") {
+      showPopup(
+        popupdataQuestions[14].title,
+        popupdataQuestions[14].message,
+        "none"
+      );
+
+      cameBack = true;
+    }
+
+    if(event.placeId === "ChIJ98CZIJrHh0gRWApM5esemkY") {
+        showPopup(
+          popupdataQuestions[16].title,
+          popupdataQuestions[16].message,
+          "block"
+        );
+
+        document
+        .getElementById("popupSend")
+        .addEventListener("click", async () => {
+          answer = document.getElementById("popupAnswer").value;
+          if (popupdataAns[10].has(answer.toLowerCase())) {
+            document.getElementById("popupAnswer").value = "";
+            closePopup();
+
+            showPopup(
+              popupdataQuestions[17].title,
+              popupdataQuestions[17].message,
+              "none"
             );
           }
         });
     }
 
-    
   });
 }
 

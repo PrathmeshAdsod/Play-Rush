@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="./play2.css" />
     <script async defer src="/google-places-api"></script>
     <script defer type="module" src="./play2.js"></script>
-
   </head>
   <body>
     <div id="timer-popup"></div>
+   <!--
     <div class="pac-card" id="pac-card">
+      
       <div id="title">Navigate to a place</div>
       <div id="pac-container">
         <input
@@ -22,20 +23,29 @@
           placeholder="Enter a location..."
         />
       </div>
-       <!-- Popup overlay -->
-  <div class="popup-overlay" id="taskPopup">
-    <div class="popup-content">
-      <button class="close-btn" > × </button>
-      <h2 id="popupTitle">The Quest for the Elder Wand</h2>
-      <p id="popupMessage">Welcome, brave wizard! Here you are at first location. In your journey you will get many riddles or questions or clues. You need to solve them. Remember to use your mind to it's highest potential. Click on the Alnwick Castle name to proceed.</p>
-      <input id="popupAnswer" type="text" class="popup-input" placeholder="Enter your answer">
-      <button class="popupSendBtn" id="popupSend" type="submit">Send</button>
+      -->
+      <!-- Popup overlay -->
+      <div class="popup-overlay" id="taskPopup">
+        <div class="popup-content">
+          <button class="close-btn">×</button>
+          <h2 id="popupTitle">The Quest for the Elder Wand</h2>
+          <p id="popupMessage">
+            Welcome, brave wizard! Here you are at first location. In your
+            journey you will get many riddles or questions or clues. You need to
+            solve them. Remember to use your mind to it's highest potential.
+            Click on the Alnwick Castle name to proceed.
+          </p>
+          <input
+            id="popupAnswer"
+            type="text"
+            class="popup-input"
+            placeholder="Enter your answer"
+          />
+          <button class="popupSendBtn" id="popupSend" type="submit">
+            Send
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-    </div>
-
-  
-   
-
   </body>
 </html>
